@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Request, Param, ParseIntPipe, UseGuards} from '@nestjs/common';
+import { Controller, Get, Post, Body, Request, Param, ParseIntPipe, UseGuards, Query} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './entities/user.entity';
@@ -22,8 +22,8 @@ export class UsersController {
   }
 
   @Get('show-user') //listando usuarios
-  findOne(@Request() email: string): Promise<User>{
-    return this.usersService.findOne(email);
+  findOne(@Query() req): Promise<User>{
+    return this.usersService.findOne(req);
   }
 
   @UseGuards(AuthGuard('local'))
