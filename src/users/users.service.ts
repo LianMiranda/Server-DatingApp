@@ -20,6 +20,8 @@ export class UsersService {
     user.email = payload.email;
     user.password = bcrypt.hashSync(payload.password, 8);
     user.birthday_date = payload.birthday_date;
+    user.passions = payload.passions.join("-");
+    user.gender = payload.gender;
 
     return this.usersRepository.save(user); 
   }
