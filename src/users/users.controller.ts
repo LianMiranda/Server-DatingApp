@@ -21,6 +21,11 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
+  @Get('show-user') //listando usuarios
+  findOne(@Request() email: string): Promise<User>{
+    return this.usersService.findOne(email);
+  }
+
   @UseGuards(AuthGuard('local'))
   @Post('sign-in')
   async login(@Request() req) {
