@@ -26,7 +26,7 @@ export class UsersService {
     return this.usersRepository.save(user); 
   }
   async findOne(req: any): Promise<User> {
-    return this.usersRepository.findOne({where: {email: req.email}});
+    return this.usersRepository.findOneByOrFail({email: req.email});
   }
   findAll(): Promise<User[]> {
     return this.usersRepository.find({});

@@ -22,7 +22,7 @@ export class UsersController {
   }
 
   @Get('show-user') //listando usuarios
-  findOne(@Query() req): Promise<User>{
+  findOne(@Query() req: string): Promise<User>{
     return this.usersService.findOne(req);
   }
 
