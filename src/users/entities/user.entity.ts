@@ -19,6 +19,12 @@ export class User {
     last_name: string; 
 
     @Column()
+    passions: string;
+
+    @Column()
+    gender: string;
+
+    @Column()
     birthday_date: Date;
 
 }
