@@ -18,10 +18,10 @@ export class User {
     @Column()
     last_name: string; 
 
-    @Column()
+    @Column({default: 'unknown'})
     passions: string;
 
-    @Column()
+    @Column({default: 'unknown'})
     gender: string;
 
     @Column()

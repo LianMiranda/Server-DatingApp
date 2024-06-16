@@ -28,6 +28,7 @@ export class UsersService {
   async findOne(req: any): Promise<User> {
     return this.usersRepository.findOneByOrFail({email: req.email});
   }
+  
   findAll(): Promise<User[]> {
     return this.usersRepository.find({});
   }
