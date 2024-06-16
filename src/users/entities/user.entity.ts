@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
+// import { Like } from './like.entity';
 
 @Entity()
 export class User {
@@ -26,5 +27,11 @@ export class User {
 
     @Column()
     birthday_date: Date;
+
+    // @OneToMany(() => Like, like => like.likedBy)
+    // likesGiven: Like[];
+
+    // @OneToMany(() => Like, like => like.likedUser)
+    // likesRecived: Like[]
 
 }

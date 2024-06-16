@@ -13,7 +13,7 @@ export class UsersService {
     private usersRepository: Repository<User>
   ){}
   
-  createUser(payload): Promise<User> {
+  async createUser(payload): Promise<User> {
     const user = new User;
     user.first_name = payload.first_name;
     user.last_name = payload.last_name;
@@ -29,8 +29,8 @@ export class UsersService {
   async findOne(email: string): Promise<User | undefined>{
     return this.usersRepository.findOne({where: {email: email}});
   }
-  
-  findAll(): Promise<User[]> {
+
+  async findAll(): Promise<User[]> {
     return this.usersRepository.find({});
   }
 }

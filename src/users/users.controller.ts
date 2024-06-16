@@ -3,12 +3,9 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './entities/user.entity';
 import { AuthGuard } from '@nestjs/passport';
-import { AuthService } from 'src/auth/auth.service';
-
 @Controller()
 export class UsersController {
   constructor(private readonly usersService: UsersService,
-              private authService: AuthService
   ) {}
 
   @Post('profile-details') //cadastro
@@ -21,7 +18,7 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  @Get('show-user') //listando usuarios
+  @Get('show-user') //listando usuario
   findOne(@Query() req): Promise<User>{
     return this.usersService.findOne(req);
   }
