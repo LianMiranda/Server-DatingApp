@@ -27,7 +27,8 @@ export class UsersService {
   }
 
   async findOne(email: any): Promise<User | undefined>{
-    return this.usersRepository.findOneByOrFail({email: email.email});
+    const userEmail = email.email? email.email : email
+    return this.usersRepository.findOneByOrFail({email: userEmail});
   }
 
   async findAll(): Promise<User[]> {
