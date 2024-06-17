@@ -1,5 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
-// import { Like } from './like.entity';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany, JoinColumn, Unique } from 'typeorm';
+
 
 @Entity()
 export class User {
@@ -7,8 +7,8 @@ export class User {
     @PrimaryGeneratedColumn()
     id: number; 
     
-    @Column()
-    email: string; 
+    @Column({ unique: true })
+    email: string;
 
     @Column()
     password: string; 
@@ -26,12 +26,5 @@ export class User {
     gender: string;
 
     @Column()
-    birthday_date: Date;
-
-    // @OneToMany(() => Like, like => like.likedBy)
-    // likesGiven: Like[];
-
-    // @OneToMany(() => Like, like => like.likedUser)
-    // likesRecived: Like[]
-
+    birthday_date: Date; 
 }
