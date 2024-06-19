@@ -28,4 +28,5 @@ export class UsersController {
   async login(@Request() req) {
     return req.user;
   }
+
 }

@@ -1,10 +1,10 @@
-import { Body, Injectable } from '@nestjs/common';
+import { Body, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { Repository } from 'typeorm';
+import { Not, Repository } from 'typeorm';
 import { User } from './entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt'
+import { NotEquals } from 'class-validator';
 
 @Injectable()
 export class UsersService {
@@ -27,11 +27,12 @@ export class UsersService {
   }
 
   async findOne(email: any): Promise<User | undefined>{
-    const userEmail = email.email? email.email : email
+    const userEmail = email.email ? email.email : email
     return this.usersRepository.findOneByOrFail({email: userEmail});
   }
 
   async findAll(): Promise<User[]> {
     return this.usersRepository.find({});
   }
+
 }

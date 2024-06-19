@@ -1,6 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany, JoinColumn, Unique } from 'typeorm';
-
-
+ 
+import { Match } from 'src/match/entities/match.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 @Entity()
 export class User {
 
@@ -27,4 +27,7 @@ export class User {
 
     @Column()
     birthday_date: Date; 
+
+    @OneToMany(() => Match, match => match.userId1)
+    matches: Match[]
 }

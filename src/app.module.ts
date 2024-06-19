@@ -4,6 +4,9 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
+import { MatchModule } from './match/match.module';
+import { User } from './users/entities/user.entity';
+import { Match } from './match/entities/match.entity';
 
 @Module({
   imports: [
@@ -13,7 +16,8 @@ import { AuthModule } from './auth/auth.module';
       autoLoadEntities: true,
       synchronize: true
     }),
-    AuthModule
+    AuthModule,
+    MatchModule
   ],
   controllers: [AppController],
   providers: [AppService],
